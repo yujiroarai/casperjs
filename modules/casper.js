@@ -593,7 +593,7 @@ Casper.prototype.download = function download(url, targetPath, method, data) {
     this.checkStarted();
     var cu = require('clientutils').create(utils.mergeObjects({}, this.options));
     try {
-        fs.write(targetPath, cu.decode(this.base64encode(url, method, data)), 'wb');
+        fs.write(targetPath, this.base64encode(url, method, data), 'w');
         this.emit('downloaded.file', targetPath);
         this.log(f("Downloaded and saved resource in %s", targetPath));
     } catch (e) {
